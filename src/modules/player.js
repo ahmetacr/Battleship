@@ -1,4 +1,4 @@
-const Gameboard = require('./gameboard');
+import { Gameboard } from './gameboard.js';
 
 class Player {
   constructor(name, turn = false) {
@@ -29,19 +29,16 @@ class Computer extends Player {
   }
 }
 
-const board2 = Gameboard();
+// const board2 = Gameboard();
 
-const myComp = new Computer('Comp', true);
-myComp.attack(myComp.playRandom(), board2);
-myComp.playRandom();
-myComp.playRandom();
-myComp.playRandom();
-console.log(myComp.played);
+// const myComp = new Computer('Comp', true);
+// myComp.attack(myComp.playRandom(), board2);
+// myComp.playRandom();
+// myComp.playRandom();
+// myComp.playRandom();
+// console.log(myComp.played);
 
-myComp.gameboard.placeShips(1, 2, 3);
-console.log(myComp.gameboard);
+// myComp.gameboard.placeShips(1, 2, 3);
+// console.log(myComp.gameboard);
 
-module.exports = {
-  Player,
-  Computer
-};
+export { Player, Computer };
