@@ -6,9 +6,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship</title>
   <link rel="stylesheet" href="../src/style.css">
-  <script src="../src/index.js" defer></script>
+  <!-- <script src="../src/index.js" defer></script> -->
+  <script src = "../src/modules/game.js" defer type="module"></script>
 </head>
 <body>
+  <div class="openingPage">
+    <div class="header">
+      <span class="fade">W</span>
+      <span class="fade">E</span>
+      <span class="fade">L</span>
+      <span class="fade">C</span>
+      <span class="fade">O</span>
+      <span class="fade">M</span>
+      <span class="fade">E</span>
+      <span class="fade">&nbsp</span>
+      <span class="fade">T</span>
+      <span class="fade">O</span>
+      <span class="fade">&nbsp</span>
+      <span class="fade">T</span>
+      <span class="fade">H</span>
+      <span class="fade">E</span>
+      <span class="fade">&nbsp</span>
+      <span class="fade">B</span>
+      <span class="fade">A</span>
+      <span class="fade">T</span>
+      <span class="fade">T</span>
+      <span class="fade">L</span>
+      <span class="fade">E</span>
+      <span class="fade">S</span>
+      <span class="fade">H</span>
+      <span class="fade">I</span>
+      <span class="fade">P</span>
+    </div>
+    <div class="boards">
+      <div class="board1">
+        <img src="../src/img/background.jpg" alt="board1">
+        <label for="board1">YOUR NAME</label>
+        <input type="text" name="board1" id="board1">
+      </div>
+      <div class="board2">
+        <img src="../src/img/background1.jpg" alt="board2">
+        <label for="board2">ENEMY NAME</label>
+        <input type="text" name="board2" id="board2" placeholder="COMPUTER" disabled>
+      </div>
+    </div>
+    <button id="startBtn">START</button>
+  </div>
+  <main>
+    <div class="mainHeader">
+      <h1>Battleship</h1>
+    </div>
+    <div class="boards">
+      <div class="userBoard">
+        <h1>User Board</h1>
   
+      </div>
+      <div class="enemyBoard">
+        <h1>Computer Board</h1>
+  
+      </div>
+    </div>
+  </main>
 </body>
 </html>
