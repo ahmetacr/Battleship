@@ -10,6 +10,14 @@ function createGameboard() {
   return boardDiv;
 }
 
-module.exports = {
-  createGameboard
+function displayMainPage(userName) {
+  // const userName = document.querySelector('.board1 > input').value
+  document.querySelector('.openingPage').style.display = 'none';
+  document.querySelector('main').style.display = 'block';
+  document.querySelector('.userBoard').textContent = userName;
+}
+
+export default {
+  createGameboard,
+  displayMainPage
 };
