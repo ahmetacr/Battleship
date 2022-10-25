@@ -1,4 +1,4 @@
-const Ship = require('./ship');
+import Ship from './ship.js';
 /**
  * Make sure player cannot hit the same point twice!
  *
@@ -67,27 +67,26 @@ const Gameboard = () => {
   };
 };
 
-const myGameBoard = Gameboard();
-myGameBoard.placeShips(1, 2, 3);
-console.log(myGameBoard.myShips[0].coordinates.includes(1));
-myGameBoard.receiveAttack(3);
-myGameBoard.receiveAttack(2);
-myGameBoard.receiveAttack(2);
-myGameBoard.placeShips(5, 6, 7);
+// const myGameBoard = Gameboard();
+// myGameBoard.placeShips(1, 2, 3);
+// console.log(myGameBoard.myShips[0].coordinates.includes(1));
+// myGameBoard.receiveAttack(3);
+// myGameBoard.receiveAttack(2);
+// myGameBoard.receiveAttack(2);
+// myGameBoard.placeShips(5, 6, 7);
 
-// console.log(myGameBoard);
+// // console.log(myGameBoard);
 
-const myGameBoard2 = Gameboard();
-myGameBoard2.placeShips(4, 5, 6);
-myGameBoard2.placeShips(1, 2, 3);
-myGameBoard2.receiveAttack(4);
-myGameBoard2.receiveAttack(5);
-myGameBoard2.receiveAttack(6);
-myGameBoard2.receiveAttack(1);
-myGameBoard2.receiveAttack(2);
-myGameBoard2.receiveAttack(3);
+// const myGameBoard2 = Gameboard();
+// myGameBoard2.placeShips(4, 5, 6);
+// myGameBoard2.placeShips(1, 2, 3);
+// myGameBoard2.receiveAttack(4);
+// myGameBoard2.receiveAttack(5);
+// myGameBoard2.receiveAttack(6);
+// myGameBoard2.receiveAttack(1);
+// myGameBoard2.receiveAttack(2);
+// myGameBoard2.receiveAttack(3);
 
-console.log('----');
-console.log(myGameBoard2.shipsSunk());
+// console.log(myGameBoard2.shipsSunk());
 
-module.exports = Gameboard;
+export { Gameboard };
