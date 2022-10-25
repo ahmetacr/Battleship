@@ -25,15 +25,15 @@ const Ship = (coordinates) => {
   };
 };
 
-const myShip = Ship([4, 5, 6]);
+// const myShip = Ship([4, 5, 6]);
 
-console.log(myShip.isSunk());
-myShip.isSunk();
-myShip.hit();
-myShip.hit();
-myShip.hit();
-console.log(myShip.isSunk());
-console.log(myShip.livesLeft);
+// console.log(myShip.isSunk());
+// myShip.isSunk();
+// myShip.hit();
+// myShip.hit();
+// myShip.hit();
+// console.log(myShip.isSunk());
+// console.log(myShip.livesLeft);
 // console.log(myShip);
 
-module.exports = Ship;
+export default Ship;
