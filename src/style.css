@@ -8,6 +8,13 @@ html {
   background-size: cover;
 }
 
+@font-face {
+  font-family: 'SpaceMission';
+  font-style: normal;
+  font-weight: normal;
+  src: local('SpaceMission'), url('./fonts/SpaceMission.otf') format('truetype');
+}
+
 :root {
   --dark-red: rgba(122, 0, 0, 0.757);
 }
@@ -28,8 +35,8 @@ body {
   left: 0;
   right: 0;
   top: 15%;
-  /* display: flex; */
-  display: none;
+  display: flex;
+  display: none; 
   gap: 3rem;
   justify-content: center;
   align-items: center;
@@ -37,7 +44,7 @@ body {
 }
 
 .openingPage .header {
-  font-size : clamp(2rem, 10vw, 5rem);
+  font-size : clamp(2rem, 4.5vw, 8rem);
   text-align: center;
 }
 
@@ -51,47 +58,34 @@ body {
 
 
   background-color: rgba(0, 0, 0, 0.344);
-  padding: 3rem;
-  width: 100%;
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
+  padding: 3rem;  font-size : clamp(2rem, 4.5vw, 8rem);
   text-align: center;
-  font-size : clamp(1rem, 5vw, 2.5rem);
-
-  opacity: 0;
-  animation: fade-in2 2s 3.5s forwards cubic-bezier(0.11, 0, 0.5, 0); 
-
-}
-
-.openingPage input[type="text"] {
-  height: 2.2rem;
-  border-radius: 5%;
 }
 
 .openingPage button {
   height: clamp(1rem, 6vw, 6rem);
   width: clamp(1rem, 18vw, 28rem);
   font-size : clamp(1rem, 3.3vw, 2.8rem);
-  border-radius: 7px;
-  background-color: rgba(0, 157, 255, 0.509);
-  /* box-shadow: 6px 6px 2px 1px rgba(0, 157, 255, 0.509); */
+  border-radius: 10px;
+  background-color: rgba(2, 137, 220, 0.509);
   outline: none;
   border: none;
   color: antiquewhite;
 
   opacity: 0;
   animation: fade-in2 1.5s 5.5s forwards; 
+
+  transition: font-size 0.5s;
 }
 
 .openingPage button:hover {
   height: clamp(1rem, 6vw, 6rem);
   width: clamp(1rem, 18vw, 28rem);
-  font-size : clamp(1rem, 3.3vw, 2.8rem);
-  background-color: rgba(32, 165, 248, 0.656);
+  font-size : clamp(1.2rem, 3.8vw, 3.4rem);
+  background-color: rgba(32, 165, 248, 0.529);
   border-radius: 7px;
   font-weight: 900;
-  color: rgb(34, 26, 26);
+  color: rgb(80, 0, 0);
   cursor: pointer;
 }
 
@@ -110,10 +104,6 @@ input::placeholder, input {
   gap: 2rem;
 }
 
-main {
-  display: none;
-  border: 2px solid red;
-}
 
 
 
@@ -236,6 +226,58 @@ span:nth-child(25) {
 @keyframes fade-in2 {
   100% {
     opacity: 1;
-    /* filter: blur(0); */
   }
 }
+
+
+/* -------------------------------------- */
+
+main {
+  /* border: 3px solid black; */
+}
+
+.mainHeader > *{
+  margin-top:1.5rem ;
+}
+
+
+main .mainHeader h1 {
+  font-size : clamp(2.5rem, 4.5vw, 8rem);
+  font-family: spaceMission;
+  color: rgb(77, 22, 22);
+  text-align: center;
+}
+
+main .cellContainer {
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(10,1fr);
+}
+
+.boards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.boards > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cell {
+  width: clamp(32px,3vw,4rem);
+  height: clamp(32px,3vw,4rem);
+  background-color: white;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1px;
+  background-color: rgba(17, 16, 16, 0.908);
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: rgba(38, 36, 36, 0.908);
+}
+
+
