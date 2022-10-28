@@ -1,5 +1,6 @@
 const Ship = (coordinates) => {
-  let length = coordinates.length;
+  // console.log('Coordinates for my ship: ', coordinates[0]);
+  let length = coordinates[0].length;
   let livesLeft = length;
 
   const hit = () => {
@@ -17,7 +18,10 @@ const Ship = (coordinates) => {
     return true;
   };
 
+  let sunk = isSunk();
+
   return {
+    sunk: sunk,
     hit: hit,
     isSunk: isSunk,
     livesLeft: livesLeft,
