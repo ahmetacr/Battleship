@@ -4,6 +4,7 @@
 // const enemyBoardCoord = require('../helpers/coordinates').board2.ships;
 import Coords from '../helpers/coordinates.js';
 import { createGameboard } from './DOM.js';
+import { displayResult } from './DOM.js';
 import { Player } from '../modules/player.js';
 import { Computer } from '../modules/player.js';
 
@@ -38,12 +39,66 @@ const Game = () => {
     Coords.board2.ships.forEach((ship) => {
       computer.gameboard.placeShips(ship);
     });
+
+    return {
+      user,
+      computer
+    };
+  };
+
+  const boards = initBoards();
+
+  const play = (event, enemy, user) => {
+    let userPlayCoordinate = event.target.classList[0];
+    userPlayCoordinate = userPlayCoordinate.replace('C', '');
+    // User plays
+    enemy.gameboard.receiveAttack(userPlayCoordinate);
+    if (event.target.children[0]) {
+      event.target.children[0].style.display = 'block';
+    } else {
+      event.target.classList.add('hit');
+    }
+
+    // Computer Plays
+    const enemyPlayCoordinate = enemy.playRandom();
+    user.gameboard.receiveAttack(enemyPlayCoordinate);
+    if (
+      document.querySelector(`.userBoard .C${enemyPlayCoordinate}`).children[0]
+    ) {
+      document.querySelector(
+        `.userBoard .C${enemyPlayCoordinate}`
+      ).children[0].style.display = 'block';
+    } else {
+      document
+        .querySelector(`.userBoard .C${enemyPlayCoordinate}`)
+        .classList.add('hit');
+    }
+
+    if (enemy.gameboard.shipsSunk()) {
+      displayResult(true, false);
+    } else if (user.gameboard.shipsSunk()) {
+      displayResult(false, true);
+    }
+  };
+
+  const addListeners = () => {
+    const enemyCells = document.querySelectorAll(
+      '.enemyBoard .cellContainer .cell'
+    );
+    enemyCells.forEach((cell) =>
+      cell.addEventListener('click', function startAttack(event) {
+        play(event, boards.computer, boards.user);
+        cell.removeEventListener('click', startAttack);
+      })
+    );
   };
 
   return {
-    initBoards
+    initBoards,
+    addListeners
   };
 };
 
 const myGame = Game();
 myGame.initBoards();
+myGame.addListeners();
