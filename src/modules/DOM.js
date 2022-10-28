@@ -5,6 +5,7 @@ function createGameboard(player1 = false, player2 = false) {
   boardDiv.classList.add('cellContainer');
   for (let i = 0; i < 100; i++) {
     const cell = document.createElement('div');
+    cell.classList.add(`C${i}`);
     cell.classList.add('cell');
     if (player1) {
       Coords.board1.ships.forEach((ship) => {
@@ -22,11 +23,12 @@ function createGameboard(player1 = false, player2 = false) {
         ship.forEach((point) => {
           if (i === point) {
             cell.classList.add('enemyShip');
+            const fireSpan = createFireSpan();
+            cell.appendChild(fireSpan);
           }
         });
       });
     }
-    cell.classList.add(i);
     boardDiv.appendChild(cell);
   }
   return boardDiv;
@@ -47,4 +49,11 @@ function displayMainPage(userName) {
   document.querySelector('.userBoard').textContent = userName;
 }
 
-export { createGameboard, displayMainPage };
+function displayResult(user = false, computer = false) {
+  let result;
+  if (user) result = 'You Won!';
+  if (computer) result = 'You Lost!';
+  document.querySelector('.result').textContent = result;
+}
+
+export { createGameboard, displayMainPage, displayResult };
