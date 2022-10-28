@@ -35,27 +35,38 @@ const Gameboard = () => {
   };
 
   const shipsSunk = () => {
-    return !myShips.some((ship) => !ship.isSunk());
+    return !myShips.some((ship) => !ship.sunk);
   };
 
   // Determines whether or not the attack hit a ship and sends the fit function to the correct ship
   // or records the coordinates of the missed shot
   const receiveAttack = (coordinate) => {
-    myShips.forEach((ship) => {
+    coordinate = Number.parseInt(coordinate);
+    console.log('Coordinate: ', coordinate);
+    let hit = false;
+    for (let i = 0; i < myShips.length; i++) {
       if (!hitCoordinates.includes(coordinate)) {
-        if (ship.coordinates.includes(coordinate)) {
+        if (myShips[i].coordinates[0].includes(coordinate)) {
           console.log(`${coordinate} hitted`);
           hitCoordinates.push(coordinate);
-          ship.hit();
-          console.log(ship.isSunk());
+          myShips[i].hit();
+          console.log('SUNK? ' + myShips[i].isSunk());
+          if (myShips[i].isSunk()) myShips[i].sunk = true;
+          hit = true;
+          break;
         } else {
-          console.log('Missed!');
-          missedAttacks += 1;
+          continue;
         }
       } else {
         console.log(`${coordinate} is already hit!`);
+        hit = true;
+        break;
       }
-    });
+    }
+    if (!hit) {
+      console.log(coordinate, ': Missed!');
+      missedAttacks += 1;
+    }
   };
 
   return {
