@@ -42,11 +42,11 @@ function createFireSpan() {
   return fireSpan;
 }
 
-function displayMainPage(userName) {
-  // const userName = document.querySelector('.board1 > input').value
+function displayMainPage() {
+  const userName = document.querySelector('.board1 > input').value;
   document.querySelector('.openingPage').style.display = 'none';
   document.querySelector('main').style.display = 'block';
-  document.querySelector('.userBoard').textContent = userName;
+  document.querySelector('.userBoard h1').textContent = userName + "'s Board";
 }
 
 function displayResult(user = false, computer = false) {
