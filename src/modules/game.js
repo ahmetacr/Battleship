@@ -8,13 +8,6 @@ import { displayResult } from './DOM.js';
 import { Player } from '../modules/player.js';
 import { Computer } from '../modules/player.js';
 
-const board1 = createGameboard(true, false);
-const board2 = createGameboard(false, true);
-const board1Div = document.querySelector('.userBoard');
-const board2Div = document.querySelector('.enemyBoard');
-board1Div.appendChild(board1);
-board2Div.appendChild(board2);
-
 const Game = () => {
   const initPlayer = () => {
     const userName = document.querySelector('.board1 > input').value;
@@ -29,6 +22,13 @@ const Game = () => {
   };
 
   const initBoards = () => {
+    const board1 = createGameboard(true, false);
+    const board2 = createGameboard(false, true);
+    const board1Div = document.querySelector('.userBoard');
+    const board2Div = document.querySelector('.enemyBoard');
+    board1Div.appendChild(board1);
+    board2Div.appendChild(board2);
+
     const user = initPlayer();
     const computer = initEnemy();
 
@@ -99,6 +99,7 @@ const Game = () => {
   };
 };
 
-const myGame = Game();
-myGame.initBoards();
-myGame.addListeners();
+// const myGame = Game();
+// myGame.addListeners();
+
+export { Game };
